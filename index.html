@@ -142,6 +142,86 @@
             width: 0%;
         }
 
+        /* SETTINGS PANEL */
+        .settings-panel {
+            background: linear-gradient(135deg, #1a2a4a 0%, #243b6a 100%);
+            border-radius: 16px;
+            padding: 20px 25px;
+            margin-bottom: 30px;
+            border: 1px solid #3a5a8a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .settings-panel .settings-title {
+            font-weight: 700;
+            font-size: 0.95em;
+            color: #ffd700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .settings-controls {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .toggle-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.85em;
+            color: #c0c8d8;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 50px;
+            height: 26px;
+            cursor: pointer;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: #3a4a6a;
+            border-radius: 26px;
+            transition: 0.3s;
+        }
+
+        .toggle-slider::before {
+            content: '';
+            position: absolute;
+            height: 20px;
+            width: 20px;
+            left: 3px;
+            bottom: 3px;
+            background: #8899bb;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+
+        .toggle-switch input:checked + .toggle-slider {
+            background: #3a7bd5;
+        }
+
+        .toggle-switch input:checked + .toggle-slider::before {
+            transform: translateX(24px);
+            background: #fff;
+        }
+
         .section-header {
             background: linear-gradient(135deg, #2a3a5a 0%, #3a4a7a 100%);
             padding: 20px 30px;
@@ -219,6 +299,14 @@
             box-shadow: 0 0 20px rgba(255, 82, 82, 0.15);
         }
 
+        .question-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+
         .question-number {
             display: inline-flex;
             align-items: center;
@@ -230,7 +318,7 @@
             font-weight: 800;
             font-size: 0.95em;
             color: #fff;
-            margin-bottom: 12px;
+            flex-shrink: 0;
         }
 
         .question-type {
@@ -241,10 +329,38 @@
             border-radius: 8px;
             font-size: 0.7em;
             font-weight: 600;
-            margin-left: 10px;
-            vertical-align: middle;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+        }
+
+        .reveal-btn {
+            margin-left: auto;
+            padding: 6px 14px;
+            background: rgba(255, 215, 0, 0.15);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 8px;
+            color: #ffd700;
+            font-size: 0.75em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+            white-space: nowrap;
+        }
+
+        .reveal-btn:hover {
+            background: rgba(255, 215, 0, 0.25);
+            transform: translateY(-1px);
+        }
+
+        .reveal-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .reveal-btn.hidden {
+            display: none;
         }
 
         .question-text {
@@ -346,6 +462,17 @@
             color: #0a0a2e !important;
         }
 
+        .option-btn.revealed {
+            border-color: #ffd700 !important;
+            background: rgba(255, 215, 0, 0.1) !important;
+            opacity: 1 !important;
+        }
+
+        .option-btn.revealed .option-letter {
+            background: #ffd700 !important;
+            color: #0a0a2e !important;
+        }
+
         .feedback {
             margin-top: 12px;
             padding: 12px 18px;
@@ -373,6 +500,13 @@
             background: rgba(255, 82, 82, 0.1);
             border: 1px solid rgba(255, 82, 82, 0.3);
             color: #ff5252;
+        }
+
+        .feedback.revealed {
+            display: block;
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            color: #ffd700;
         }
 
         /* SOMA QUESTIONS */
@@ -461,6 +595,17 @@
             color: #0a0a2e !important;
         }
 
+        .soma-item.item-revealed {
+            border-color: #ffd700 !important;
+            background: rgba(255, 215, 0, 0.1) !important;
+            opacity: 1 !important;
+        }
+
+        .soma-item.item-revealed .soma-value {
+            background: #ffd700 !important;
+            color: #0a0a2e !important;
+        }
+
         .soma-confirm-btn {
             margin-top: 12px;
             padding: 12px 30px;
@@ -491,9 +636,16 @@
             color: #8899bb;
         }
 
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
         .reset-btn {
             display: block;
-            margin: 40px auto;
             padding: 16px 50px;
             background: linear-gradient(135deg, #ff5252, #d32f2f);
             border: none;
@@ -513,6 +665,38 @@
             box-shadow: 0 8px 25px rgba(255, 82, 82, 0.4);
         }
 
+        .clear-cache-btn {
+            display: block;
+            padding: 16px 40px;
+            background: linear-gradient(135deg, #ff9800, #f57c00);
+            border: none;
+            border-radius: 12px;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .clear-cache-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 152, 0, 0.4);
+        }
+
+        .cache-notice {
+            text-align: center;
+            color: #4a6a4a;
+            font-size: 0.8em;
+            margin-top: 10px;
+            padding: 8px;
+            background: rgba(0, 230, 118, 0.05);
+            border-radius: 8px;
+            border: 1px solid rgba(0, 230, 118, 0.1);
+        }
+
         .footer {
             text-align: center;
             padding: 30px;
@@ -528,6 +712,9 @@
             .question-card { padding: 18px; }
             .score-panel { padding: 15px; }
             .score-item .number { font-size: 1.5em; }
+            .settings-panel { flex-direction: column; align-items: flex-start; }
+            .question-header { flex-wrap: wrap; }
+            .reveal-btn { margin-left: 0; margin-top: 5px; }
         }
     </style>
 </head>
@@ -562,9 +749,26 @@
         </div>
     </div>
 
+    <div class="settings-panel">
+        <div class="settings-title">⚙️ Configurações</div>
+        <div class="settings-controls">
+            <div class="toggle-container">
+                <span>👁 Ver Resposta</span>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="toggleReveal" checked onchange="toggleRevealButtons()">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+
     <div id="questionsContainer"></div>
 
-    <button class="reset-btn" onclick="resetQuiz()">🔄 Reiniciar Simulado</button>
+    <div class="btn-group">
+        <button class="reset-btn" onclick="resetQuiz()">🔄 Reiniciar Simulado</button>
+        <button class="clear-cache-btn" onclick="clearCache()">🗑️ Limpar Cache</button>
+    </div>
+    <div class="cache-notice" id="cacheNotice">💾 Suas respostas são salvas automaticamente</div>
 
     <div class="footer">
         Simulado UFPR 2027 — Material de estudo. Boa sorte! 🎓
@@ -572,6 +776,50 @@
 </div>
 
 <script>
+// ============================
+// PROTEÇÃO: Ocultar respostas do console
+// ============================
+(function() {
+    // Desabilita console para dificultar visualização das respostas
+    const noop = function() {};
+    const methods = ['log', 'debug', 'info', 'warn', 'error', 'table', 'dir', 'dirxml', 'trace', 'group', 'groupCollapsed', 'groupEnd', 'clear', 'count', 'countReset', 'assert', 'profile', 'profileEnd', 'time', 'timeLog', 'timeEnd', 'timeStamp'];
+    
+    // Guarda referências originais internamente
+    const _c = {};
+    methods.forEach(m => { _c[m] = console[m]; });
+    
+    // Sobrescreve para não exibir nada
+    methods.forEach(m => { console[m] = noop; });
+    
+    // Anti-debugger
+    setInterval(function() {
+        const start = performance.now();
+        debugger;
+        if (performance.now() - start > 100) {
+            document.body.innerHTML = '<div style="text-align:center;padding:50px;color:#ff5252;font-size:2em;font-family:Inter,sans-serif;">⛔ DevTools detectado.<br>Feche o console para continuar.</div>';
+        }
+    }, 3000);
+})();
+
+// ============================
+// DADOS DAS QUESTÕES (ofuscados)
+// ============================
+const _0x = (function() {
+    // Respostas codificadas em base64 para não aparecerem em texto puro
+    const _e = 'eyIxIjoxLCIyIjoxLCIzIjoyLCI0IjoxLCI1IjoxOSwiNiI6MiwiNyI6MSwiOCI6MjIsIjkiOjEsIjEwIjoyLCIxMSI6MiwiMTIiOjExLCIxMyI6MywiMTQiOjEsIjE1IjowLCIxNiI6MTUsIjE3IjoxLCIxOCI6MiwiMTkiOjEsIjIwIjoxLCIyMSI6MiwiMjIiOjEsIjIzIjoxLCIyNCI6MCwiMjUiOjEsIjI2IjoyLCIyNyI6MTEsIjI4IjoyLCIyOSI6MywiMzAiOjIsIjMxIjoxLCIzMiI6MSwiMzMiOjEsIjM0IjoyLCIzNSI6MTMsIjM2IjozLCIzNyI6MSwiMzgiOjEsIjM5IjozLCI0MCI6MSwiNDEiOjEsIjQyIjoxMSwiNDMiOjMsIjQ0IjoxLCI0NSI6MywiNDYiOjEsIjQ3IjoyMSwiNDgiOjMsIjQ5IjoxMywiNTAiOjAsIjUxIjozLCI1MiI6MiwiNTMiOjIsIjU0IjoyNywiNTUiOjIsIjU2IjoxLCI1NyI6MjIsIjU4IjoxLCI1OSI6MSwiNjAiOjIxLCI2MSI6MSwiNjIiOjEsIjYzIjoxNSwiNjQiOjEsIjY1IjoyNywiNjYiOjIsIjY3IjowLCI2OCI6MjksIjY5IjoyLCI3MCI6MSwiNzEiOjEsIjcyIjoyLCI3MyI6MjcsIjc0IjoxLCI3NSI6MCwiNzYiOjEsIjc3IjoxNSwiNzgiOjEsIjc5IjoxLCI4MCI6MjN9';
+    return JSON.parse(atob(_e));
+})();
+
+function _g(id) { return _0x[String(id)]; }
+
+// Dados das questões soma (itens corretos codificados)
+const _s = (function() {
+    const _e2 = 'eyI1IjpbMSwyLDE2XSwiOCI6WzIsMTYsNF0sIjEyIjpbMSwyLDhdLCIxNiI6WzEsMiw0LDhdLCIyNyI6WzEsMiw4XSwiMzUiOlsxLDQsOF0sIjQyIjpbMSwyLDhdLCI0NyI6WzEsNCwxNl0sIjQ5IjpbMSw0LDhdLCI1NCI6WzEsMiw4LDE2XSwiNTciOlsyLDQsMTZdLCI2MCI6WzEsNCwxNl0sIjYzIjpbMSwyLDQsOF0sIjY1IjpbMSwyLDgsMTZdLCI2OCI6WzEsNCw4LDE2XSwiNzMiOlsxLDIsOCwxNl0sIjc3IjpbMSwyLDQsOF0sIjgwIjpbMSwyLDQsMTZdfQ==';
+    return JSON.parse(atob(_e2));
+})();
+
+function _gs(id) { return _s[String(id)] || []; }
+
 const questionsData = [
     // ===== PORTUGUÊS E LITERATURA (1-16) =====
     {
@@ -584,8 +832,7 @@ const questionsData = [
         }
     },
     {
-        id: 1,
-        type: "multiple",
+        id: 1, type: "multiple",
         text: "Quanto à estrutura e aos sentidos do Texto 1, assinale a alternativa correta.",
         options: [
             "O texto apresenta uma visão materialista da existência, valorizando apenas o que é concretamente observável.",
@@ -593,15 +840,12 @@ const questionsData = [
             "A expressão \"um pouco mais\" funciona como aposto explicativo do pronome \"isso\".",
             "O verbo \"pressente\" indica uma ação concluída no passado, reforçando a ideia de finitude.",
             "O substantivo \"mistério\" é utilizado em sentido denotativo, referindo-se a rituais religiosos específicos."
-        ],
-        answer: 1
+        ]
     },
     {
-        id: 2,
-        type: "multiple",
+        id: 2, type: "multiple",
         text: `No trecho "que os olhos não conseguem perceber", o pronome relativo "que" exerce a função sintática de:`,
-        options: ["Sujeito.", "Objeto direto.", "Objeto indireto.", "Complemento nominal.", "Adjunto adverbial."],
-        answer: 1
+        options: ["Sujeito.", "Objeto direto.", "Objeto indireto.", "Complemento nominal.", "Adjunto adverbial."]
     },
     {
         textBefore: {
@@ -611,8 +855,7 @@ const questionsData = [
         }
     },
     {
-        id: 3,
-        type: "multiple",
+        id: 3, type: "multiple",
         text: "Sobre o trecho de <em>Vidas Secas</em>, é correto afirmar:",
         options: [
             "A passagem retrata o momento final da obra, em que Fabiano alcança definitivamente a ascensão social.",
@@ -620,12 +863,10 @@ const questionsData = [
             "O trecho evidencia o caráter cíclico da narrativa, apresentando um momento de aparente bonança que não elimina a precariedade estrutural da vida dos personagens.",
             "O \"relógio de prata\" simboliza a integração de Fabiano ao mundo urbano e letrado.",
             "A menção a \"saias de ramagens vistosas\" indica que Sinha Vitória abandonou completamente a vida no sertão."
-        ],
-        answer: 2
+        ]
     },
     {
-        id: 4,
-        type: "multiple",
+        id: 4, type: "multiple",
         text: `No trecho "Sim, senhor, arrumara-se", o tempo verbal empregado (pretérito mais-que-perfeito) indica:`,
         options: [
             "Uma ação habitual no passado.",
@@ -633,25 +874,21 @@ const questionsData = [
             "Uma ação hipotética que não se concretizou.",
             "Uma ação simultânea ao momento da fala do narrador.",
             "Uma ação futura vista do ponto de vista do passado."
-        ],
-        answer: 1
+        ]
     },
     {
-        id: 5,
-        type: "soma",
+        id: 5, type: "soma",
         text: "Sobre os movimentos literários brasileiros, some os números das afirmativas corretas.",
         items: [
-            { value: 1, text: "O Romantismo brasileiro teve como marco inicial a publicação de <em>Suspiros Poéticos e Saudades</em>, de Gonçalves de Magalhães, em 1836.", correct: true },
-            { value: 2, text: "O Naturalismo, representado por Aluísio Azevedo em <em>O Cortiço</em>, enfatiza a influência do meio, da raça e do momento sobre o comportamento humano.", correct: true },
-            { value: 4, text: "O Modernismo de 1922, inaugurado pela Semana de Arte Moderna, defendia a total adesão aos modelos parnasianos de versificação.", correct: false },
-            { value: 8, text: "A terceira geração modernista, também chamada de \"Geração de 45\", inclui autores como João Cabral de Melo Neto e Clarice Lispector.", correct: false },
-            { value: 16, text: "O Barroco brasileiro tem como principal representante Gregório de Matos, cuja obra se divide em lírica sacra, lírica amorosa e poesia satírica.", correct: true }
-        ],
-        answer: 19
+            { value: 1, text: "O Romantismo brasileiro teve como marco inicial a publicação de <em>Suspiros Poéticos e Saudades</em>, de Gonçalves de Magalhães, em 1836." },
+            { value: 2, text: "O Naturalismo, representado por Aluísio Azevedo em <em>O Cortiço</em>, enfatiza a influência do meio, da raça e do momento sobre o comportamento humano." },
+            { value: 4, text: "O Modernismo de 1922, inaugurado pela Semana de Arte Moderna, defendia a total adesão aos modelos parnasianos de versificação." },
+            { value: 8, text: "A terceira geração modernista, também chamada de \"Geração de 45\", inclui autores como João Cabral de Melo Neto e Clarice Lispector." },
+            { value: 16, text: "O Barroco brasileiro tem como principal representante Gregório de Matos, cuja obra se divide em lírica sacra, lírica amorosa e poesia satírica." }
+        ]
     },
     {
-        id: 6,
-        type: "multiple",
+        id: 6, type: "multiple",
         text: "Assinale a alternativa em que a regência verbal está de acordo com a norma-padrão da língua portuguesa.",
         options: [
             "O filme que assistimos ontem foi premiado em Cannes.",
@@ -659,12 +896,10 @@ const questionsData = [
             "O candidato aspirava ao cargo de senador com grande empenho.",
             "Esqueci do livro na biblioteca da universidade.",
             "Chegamos em Curitiba na madrugada de domingo."
-        ],
-        answer: 2
+        ]
     },
     {
-        id: 7,
-        type: "multiple",
+        id: 7, type: "multiple",
         text: `Sobre <em>O Alienista</em> e seu autor, assinale a alternativa correta.`,
         textBefore: {
             label: "Trecho",
@@ -677,25 +912,21 @@ const questionsData = [
             "Simão Bacamarte é apresentado como um herói trágico que sacrifica a própria vida pela cura dos loucos.",
             "A narrativa se passa no Rio de Janeiro do século XX, durante a República Velha.",
             "O desfecho da obra confirma que todos os internados eram, de fato, portadores de graves doenças mentais."
-        ],
-        answer: 1
+        ]
     },
     {
-        id: 8,
-        type: "soma",
+        id: 8, type: "soma",
         text: "Sobre a obra <em>A Hora da Estrela</em>, de Clarice Lispector, some os números das afirmativas corretas.",
         items: [
-            { value: 1, text: "A narradora da obra é Macabéa, que conta sua própria história em primeira pessoa.", correct: false },
-            { value: 2, text: "Rodrigo S.M., o narrador-personagem, reflete sobre o ato de escrever e sobre a dificuldade de dar voz a uma personagem marginalizada.", correct: true },
-            { value: 4, text: "Macabéa é uma jovem nordestina que migra para o Rio de Janeiro e vive em condições de extrema precariedade.", correct: true },
-            { value: 8, text: "A obra é um romance de tese que defende explicitamente a reforma agrária como solução para a pobreza.", correct: false },
-            { value: 16, text: "O título \"A Hora da Estrela\" relaciona-se ao momento da morte de Macabéa, quando ela finalmente alcança uma forma de protagonismo.", correct: true }
-        ],
-        answer: 22
+            { value: 1, text: "A narradora da obra é Macabéa, que conta sua própria história em primeira pessoa." },
+            { value: 2, text: "Rodrigo S.M., o narrador-personagem, reflete sobre o ato de escrever e sobre a dificuldade de dar voz a uma personagem marginalizada." },
+            { value: 4, text: "Macabéa é uma jovem nordestina que migra para o Rio de Janeiro e vive em condições de extrema precariedade." },
+            { value: 8, text: "A obra é um romance de tese que defende explicitamente a reforma agrária como solução para a pobreza." },
+            { value: 16, text: "O título \"A Hora da Estrela\" relaciona-se ao momento da morte de Macabéa, quando ela finalmente alcança uma forma de protagonismo." }
+        ]
     },
     {
-        id: 9,
-        type: "multiple",
+        id: 9, type: "multiple",
         text: "Assinale a alternativa em que todas as palavras estão grafadas corretamente segundo o Acordo Ortográfico vigente.",
         options: [
             "Ideia, jiboia, heróico, platéia.",
@@ -703,12 +934,10 @@ const questionsData = [
             "Idéia, jibóia, heroico, plateia.",
             "Ideia, jibóia, heróico, platéia.",
             "Idéia, jiboia, heróico, plateia."
-        ],
-        answer: 1
+        ]
     },
     {
-        id: 10,
-        type: "multiple",
+        id: 10, type: "multiple",
         text: "Sobre o <em>Auto da Compadecida</em>, de Ariano Suassuna, assinale a alternativa correta.",
         options: [
             "A peça é uma tragédia clássica que segue rigorosamente as três unidades aristotélicas.",
@@ -716,32 +945,26 @@ const questionsData = [
             "A obra mescla elementos da tradição popular nordestina, da literatura de cordel e da religiosidade católica para criticar as desigualdades sociais.",
             "O julgamento final é conduzido por um juiz terreno, sem qualquer intervenção de figuras divinas.",
             "A linguagem da peça é exclusivamente erudita, sem qualquer registro de oralidade ou regionalismo."
-        ],
-        answer: 2
+        ]
     },
     {
-        id: 11,
-        type: "multiple",
+        id: 11, type: "multiple",
         text: `No período "Embora estivesse chovendo muito, os agricultores decidiram plantar as mudas", a oração subordinada expressa ideia de:`,
-        options: ["Causa.", "Condição.", "Concessão.", "Finalidade.", "Proporção."],
-        answer: 2
+        options: ["Causa.", "Condição.", "Concessão.", "Finalidade.", "Proporção."]
     },
     {
-        id: 12,
-        type: "soma",
+        id: 12, type: "soma",
         text: `Sobre o poema "No meio do caminho", de Carlos Drummond de Andrade, some os números das afirmativas corretas.`,
         items: [
-            { value: 1, text: "O poema pertence à primeira fase do Modernismo brasileiro e foi publicado no livro <em>Alguma Poesia</em> (1930).", correct: true },
-            { value: 2, text: "A repetição obsessiva da palavra \"pedra\" pode ser interpretada como símbolo dos obstáculos da existência humana.", correct: true },
-            { value: 4, text: "O poema segue rigorosamente a métrica do soneto clássico, com versos decassílabos.", correct: false },
-            { value: 8, text: "A linguagem deliberadamente simples e repetitiva provocou escândalo na época de sua publicação.", correct: true },
-            { value: 16, text: "O eu lírico demonstra total indiferença diante da pedra, revelando uma postura niilista e descompromissada.", correct: false }
-        ],
-        answer: 11
+            { value: 1, text: "O poema pertence à primeira fase do Modernismo brasileiro e foi publicado no livro <em>Alguma Poesia</em> (1930)." },
+            { value: 2, text: "A repetição obsessiva da palavra \"pedra\" pode ser interpretada como símbolo dos obstáculos da existência humana." },
+            { value: 4, text: "O poema segue rigorosamente a métrica do soneto clássico, com versos decassílabos." },
+            { value: 8, text: "A linguagem deliberadamente simples e repetitiva provocou escândalo na época de sua publicação." },
+            { value: 16, text: "O eu lírico demonstra total indiferença diante da pedra, revelando uma postura niilista e descompromissada." }
+        ]
     },
     {
-        id: 13,
-        type: "multiple",
+        id: 13, type: "multiple",
         text: "Assinale a alternativa em que o uso da crase está correto.",
         options: [
             "O professor dirigiu-se à todos os alunos da turma.",
@@ -749,12 +972,10 @@ const questionsData = [
             "O ônibus chegou à Curitiba às oito horas da manhã.",
             "Refiro-me àquela candidata que fez o melhor discurso.",
             "O médico receitou o remédio à distância de duas horas entre as doses."
-        ],
-        answer: 3
+        ]
     },
     {
-        id: 14,
-        type: "multiple",
+        id: 14, type: "multiple",
         text: "Sobre <em>Quarto de Despejo</em>, de Carolina Maria de Jesus, assinale a alternativa correta.",
         options: [
             "Trata-se de um romance de ficção científica ambientado na periferia de São Paulo no século XXI.",
@@ -762,12 +983,10 @@ const questionsData = [
             "O livro foi escrito originalmente em inglês e traduzido para o português por Jorge Amado.",
             "A narrativa é contada em terceira pessoa por um narrador onisciente.",
             "A obra foi publicada pela primeira vez na década de 1990."
-        ],
-        answer: 1
+        ]
     },
     {
-        id: 15,
-        type: "multiple",
+        id: 15, type: "multiple",
         text: `No trecho "Os alunos, cujos trabalhos foram premiados, receberão bolsas de estudo", o pronome relativo "cujos" estabelece relação de:`,
         options: [
             "Posse entre \"alunos\" e \"trabalhos\".",
@@ -775,21 +994,18 @@ const questionsData = [
             "Tempo entre \"trabalhos\" e \"premiados\".",
             "Lugar entre \"alunos\" e \"estudo\".",
             "Modo entre \"trabalhos\" e \"bolsas\"."
-        ],
-        answer: 0
+        ]
     },
     {
-        id: 16,
-        type: "soma",
+        id: 16, type: "soma",
         text: "Sobre as funções da linguagem, some os números das afirmativas corretas.",
         items: [
-            { value: 1, text: "Na frase \"Atenção! Piso molhado!\", predomina a função conativa, pois o emissor busca influenciar o comportamento do receptor.", correct: true },
-            { value: 2, text: "A função metalinguística ocorre quando a linguagem se volta para si mesma, como em um poema que trata do ato de fazer poesia.", correct: true },
-            { value: 4, text: "A função referencial, centrada no contexto, é predominante em textos jornalísticos e científicos.", correct: true },
-            { value: 8, text: "A função fática tem como objetivo testar o canal de comunicação, como em \"Alô? Está me ouvindo?\".", correct: true },
-            { value: 16, text: "A função emotiva é centrada no receptor e manifesta-se principalmente em textos publicitários.", correct: false }
-        ],
-        answer: 15
+            { value: 1, text: "Na frase \"Atenção! Piso molhado!\", predomina a função conativa, pois o emissor busca influenciar o comportamento do receptor." },
+            { value: 2, text: "A função metalinguística ocorre quando a linguagem se volta para si mesma, como em um poema que trata do ato de fazer poesia." },
+            { value: 4, text: "A função referencial, centrada no contexto, é predominante em textos jornalísticos e científicos." },
+            { value: 8, text: "A função fática tem como objetivo testar o canal de comunicação, como em \"Alô? Está me ouvindo?\"." },
+            { value: 16, text: "A função emotiva é centrada no receptor e manifesta-se principalmente em textos publicitários." }
+        ]
     },
     // ===== INGLÊS (17-24) =====
     {
@@ -802,8 +1018,7 @@ const questionsData = [
         }
     },
     {
-        id: 17,
-        type: "multiple",
+        id: 17, type: "multiple",
         text: "According to the text, the Amazon rainforest may become irreversibly damaged if:",
         options: [
             "Global temperatures decrease by 2°C.",
@@ -811,12 +1026,10 @@ const questionsData = [
             "Indigenous communities abandon the region entirely.",
             "The carbon stored in the forest drops below 100 billion metric tons.",
             "The <em>Nature</em> study is retracted by the scientific community."
-        ],
-        answer: 1
+        ]
     },
     {
-        id: 18,
-        type: "multiple",
+        id: 18, type: "multiple",
         text: `The expression "tipping point" in the title most closely means:`,
         options: [
             "A moment of political agreement between nations.",
@@ -824,12 +1037,10 @@ const questionsData = [
             "A critical threshold beyond which a system undergoes irreversible change.",
             "A seasonal period of heavy rainfall in the Amazon basin.",
             "A technique used by loggers to fell large trees."
-        ],
-        answer: 2
+        ]
     },
     {
-        id: 19,
-        type: "multiple",
+        id: 19, type: "multiple",
         text: "According to Dr. Mariana Silva's statement, the loss of the Amazon would mean:",
         options: [
             "The end of all scientific research in Brazil.",
@@ -837,8 +1048,7 @@ const questionsData = [
             "A temporary inconvenience for the timber industry.",
             "An opportunity to expand agricultural land sustainably.",
             "The relocation of all Indigenous communities to urban areas."
-        ],
-        answer: 1
+        ]
     },
     {
         textBefore: {
@@ -848,8 +1058,7 @@ const questionsData = [
         }
     },
     {
-        id: 20,
-        type: "multiple",
+        id: 20, type: "multiple",
         text: "According to the text, one concern about AI in education is that it:",
         options: [
             "Makes learning too easy for all students.",
@@ -857,19 +1066,15 @@ const questionsData = [
             "Has been banned by most governments.",
             "Replaces the need for any school infrastructure.",
             "Only works with students over the age of 18."
-        ],
-        answer: 1
+        ]
     },
     {
-        id: 21,
-        type: "multiple",
+        id: 21, type: "multiple",
         text: `The word "erode" in the text is closest in meaning to:`,
-        options: ["Strengthen.", "Build.", "Gradually destroy or diminish.", "Accelerate.", "Celebrate."],
-        answer: 2
+        options: ["Strengthen.", "Build.", "Gradually destroy or diminish.", "Accelerate.", "Celebrate."]
     },
     {
-        id: 22,
-        type: "multiple",
+        id: 22, type: "multiple",
         text: `Choose the alternative that correctly completes the sentence:<br><br>"If I ______ about the exam date, I ______ harder last week."`,
         options: [
             "knew / would study",
@@ -877,12 +1082,10 @@ const questionsData = [
             "know / will study",
             "have known / would study",
             "had known / will have studied"
-        ],
-        answer: 1
+        ]
     },
     {
-        id: 23,
-        type: "multiple",
+        id: 23, type: "multiple",
         text: "Choose the alternative in which the relative pronoun is used correctly:",
         options: [
             "The scientist which discovered the vaccine was awarded a prize.",
@@ -890,12 +1093,10 @@ const questionsData = [
             "The data who was collected proved the hypothesis wrong.",
             "The professor, that wrote the book, retired last year.",
             "The students which passed the test celebrated all night."
-        ],
-        answer: 1
+        ]
     },
     {
-        id: 24,
-        type: "multiple",
+        id: 24, type: "multiple",
         text: `The passive voice of the sentence "The government will implement new environmental policies next year" is:`,
         options: [
             "New environmental policies will be implemented by the government next year.",
@@ -903,261 +1104,173 @@ const questionsData = [
             "New environmental policies were being implemented by the government next year.",
             "New environmental policies have been implemented by the government next year.",
             "New environmental policies would be implementing by the government next year."
-        ],
-        answer: 0
+        ]
     },
     // ===== MATEMÁTICA (25-32) =====
+    { section: "MATEMÁTICA", sectionSub: "Questões 25 a 32" },
     {
-        section: "MATEMÁTICA",
-        sectionSub: "Questões 25 a 32"
-    },
-    {
-        id: 25,
-        type: "multiple",
+        id: 25, type: "multiple",
         text: "Considere a função f(x) = 2x² − 8x + 6. O valor mínimo dessa função é:",
-        options: ["−4", "−2", "0", "2", "6"],
-        answer: 1
+        options: ["−4", "−2", "0", "2", "6"]
     },
     {
-        id: 26,
-        type: "multiple",
+        id: 26, type: "multiple",
         text: "Em uma progressão aritmética, o terceiro termo é 11 e o sétimo termo é 27. A razão dessa progressão é:",
-        options: ["2", "3", "4", "5", "6"],
-        answer: 2
+        options: ["2", "3", "4", "5", "6"]
     },
     {
-        id: 27,
-        type: "soma",
+        id: 27, type: "soma",
         text: "Sobre a equação x² − 5x + 6 = 0, some os números das afirmativas corretas.",
         items: [
-            { value: 1, text: "O discriminante da equação é igual a 1.", correct: true },
-            { value: 2, text: "As raízes da equação são x = 2 e x = 3.", correct: true },
-            { value: 4, text: "A soma das raízes é igual a 6.", correct: false },
-            { value: 8, text: "O produto das raízes é igual a 6.", correct: true },
-            { value: 16, text: "A equação possui raízes complexas não reais.", correct: false }
-        ],
-        answer: 11
+            { value: 1, text: "O discriminante da equação é igual a 1." },
+            { value: 2, text: "As raízes da equação são x = 2 e x = 3." },
+            { value: 4, text: "A soma das raízes é igual a 6." },
+            { value: 8, text: "O produto das raízes é igual a 6." },
+            { value: 16, text: "A equação possui raízes complexas não reais." }
+        ]
     },
     {
-        id: 28,
-        type: "multiple",
+        id: 28, type: "multiple",
         text: "Um triângulo retângulo possui catetos medindo 6 cm e 8 cm. O raio da circunferência circunscrita a esse triângulo mede:",
-        options: ["3 cm", "4 cm", "5 cm", "7 cm", "10 cm"],
-        answer: 2
+        options: ["3 cm", "4 cm", "5 cm", "7 cm", "10 cm"]
     },
     {
-        id: 29,
-        type: "multiple",
+        id: 29, type: "multiple",
         text: "De quantas maneiras distintas é possível escolher uma comissão de 3 pessoas em um grupo de 8?",
-        options: ["24", "36", "48", "56", "120"],
-        answer: 3
+        options: ["24", "36", "48", "56", "120"]
     },
     {
-        id: 30,
-        type: "multiple",
+        id: 30, type: "multiple",
         text: "O valor de log₂ 32 + log₃ 81 é:",
-        options: ["7", "8", "9", "10", "12"],
-        answer: 2
+        options: ["7", "8", "9", "10", "12"]
     },
     {
-        id: 31,
-        type: "multiple",
+        id: 31, type: "multiple",
         text: "Considere a matriz A = [[2, 1], [3, 4]]. O determinante de A é:",
-        options: ["3", "5", "7", "8", "11"],
-        answer: 1
+        options: ["3", "5", "7", "8", "11"]
     },
     {
-        id: 32,
-        type: "multiple",
+        id: 32, type: "multiple",
         text: "Uma urna contém 4 bolas brancas, 3 bolas azuis e 5 bolas vermelhas. Retirando-se uma bola ao acaso, a probabilidade de que ela <strong>não</strong> seja vermelha é:",
-        options: ["5/12", "7/12", "1/3", "1/4", "3/4"],
-        answer: 1
+        options: ["5/12", "7/12", "1/3", "1/4", "3/4"]
     },
     // ===== FÍSICA (33-40) =====
+    { section: "FÍSICA", sectionSub: "Questões 33 a 40" },
     {
-        section: "FÍSICA",
-        sectionSub: "Questões 33 a 40"
-    },
-    {
-        id: 33,
-        type: "multiple",
+        id: 33, type: "multiple",
         text: "Um carro parte do repouso e atinge a velocidade de 108 km/h em 10 segundos, com aceleração constante. A distância percorrida nesse intervalo é:",
-        options: ["100 m", "150 m", "200 m", "300 m", "540 m"],
-        answer: 1
+        options: ["100 m", "150 m", "200 m", "300 m", "540 m"]
     },
     {
-        id: 34,
-        type: "multiple",
+        id: 34, type: "multiple",
         text: "Um bloco de massa 5 kg repousa sobre um plano horizontal. O coeficiente de atrito estático é 0,4. Considerando g = 10 m/s², a força mínima necessária para iniciar o movimento é:",
-        options: ["10 N", "15 N", "20 N", "25 N", "50 N"],
-        answer: 2
+        options: ["10 N", "15 N", "20 N", "25 N", "50 N"]
     },
     {
-        id: 35,
-        type: "soma",
+        id: 35, type: "soma",
         text: "Sobre os princípios da Termodinâmica, some os números das afirmativas corretas.",
         items: [
-            { value: 1, text: "A Primeira Lei da Termodinâmica é uma expressão do princípio da conservação da energia.", correct: true },
-            { value: 2, text: "É possível construir uma máquina térmica que converta integralmente calor em trabalho, sem perdas.", correct: false },
-            { value: 4, text: "A entropia de um sistema isolado tende a aumentar em processos espontâneos, conforme a Segunda Lei.", correct: true },
-            { value: 8, text: "Em uma transformação isocórica, o trabalho realizado pelo gás é nulo.", correct: true },
-            { value: 16, text: "A escala Kelvin é uma escala relativa, pois admite valores negativos.", correct: false }
-        ],
-        answer: 13
+            { value: 1, text: "A Primeira Lei da Termodinâmica é uma expressão do princípio da conservação da energia." },
+            { value: 2, text: "É possível construir uma máquina térmica que converta integralmente calor em trabalho, sem perdas." },
+            { value: 4, text: "A entropia de um sistema isolado tende a aumentar em processos espontâneos, conforme a Segunda Lei." },
+            { value: 8, text: "Em uma transformação isocórica, o trabalho realizado pelo gás é nulo." },
+            { value: 16, text: "A escala Kelvin é uma escala relativa, pois admite valores negativos." }
+        ]
     },
     {
-        id: 36,
-        type: "multiple",
+        id: 36, type: "multiple",
         text: "Uma lente convergente possui distância focal de 20 cm. Um objeto é colocado a 60 cm da lente. A distância da imagem à lente é:",
-        options: ["10 cm", "15 cm", "20 cm", "30 cm", "40 cm"],
-        answer: 3
+        options: ["10 cm", "15 cm", "20 cm", "30 cm", "40 cm"]
     },
     {
-        id: 37,
-        type: "multiple",
+        id: 37, type: "multiple",
         text: "Dois resistores, de 6 Ω e 3 Ω, são associados em paralelo. A resistência equivalente da associação é:",
-        options: ["1 Ω", "2 Ω", "3 Ω", "4,5 Ω", "9 Ω"],
-        answer: 1
+        options: ["1 Ω", "2 Ω", "3 Ω", "4,5 Ω", "9 Ω"]
     },
     {
-        id: 38,
-        type: "multiple",
+        id: 38, type: "multiple",
         text: "Uma onda sonora tem frequência de 440 Hz e se propaga no ar com velocidade de 340 m/s. O comprimento de onda é aproximadamente:",
-        options: ["0,44 m", "0,77 m", "1,29 m", "1,50 m", "2,00 m"],
-        answer: 1
+        options: ["0,44 m", "0,77 m", "1,29 m", "1,50 m", "2,00 m"]
     },
     {
-        id: 39,
-        type: "multiple",
+        id: 39, type: "multiple",
         text: "Um satélite orbita a Terra em órbita circular de raio R. Se o raio for duplicado para 2R, a velocidade orbital:",
-        options: [
-            "Dobra.",
-            "Quadruplica.",
-            "Reduz-se à metade.",
-            "Reduz-se por um fator de √2.",
-            "Permanece a mesma."
-        ],
-        answer: 3
+        options: ["Dobra.", "Quadruplica.", "Reduz-se à metade.", "Reduz-se por um fator de √2.", "Permanece a mesma."]
     },
     {
-        id: 40,
-        type: "multiple",
+        id: 40, type: "multiple",
         text: "Um corpo de massa 2 kg é lançado verticalmente para cima com velocidade inicial de 30 m/s. Desprezando a resistência do ar (g = 10 m/s²), a altura máxima atingida é:",
-        options: ["30 m", "45 m", "60 m", "75 m", "90 m"],
-        answer: 1
+        options: ["30 m", "45 m", "60 m", "75 m", "90 m"]
     },
     // ===== QUÍMICA (41-48) =====
+    { section: "QUÍMICA", sectionSub: "Questões 41 a 48" },
     {
-        section: "QUÍMICA",
-        sectionSub: "Questões 41 a 48"
-    },
-    {
-        id: 41,
-        type: "multiple",
+        id: 41, type: "multiple",
         text: "O número de prótons, nêutrons e elétrons do íon ⁵⁶₂₆Fe³⁺ é, respectivamente:",
-        options: [
-            "26, 30 e 26",
-            "26, 30 e 23",
-            "26, 56 e 23",
-            "30, 26 e 23",
-            "56, 26 e 26"
-        ],
-        answer: 1
+        options: ["26, 30 e 26", "26, 30 e 23", "26, 56 e 23", "30, 26 e 23", "56, 26 e 26"]
     },
     {
-        id: 42,
-        type: "soma",
+        id: 42, type: "soma",
         text: "Sobre as ligações químicas, some os números das afirmativas corretas.",
         items: [
-            { value: 1, text: "Na molécula de CO₂, as ligações entre carbono e oxigênio são covalentes polares, mas a molécula é apolar devido à sua geometria linear.", correct: true },
-            { value: 2, text: "O cloreto de sódio (NaCl) é um composto iônico que apresenta alto ponto de fusão.", correct: true },
-            { value: 4, text: "As ligações de hidrogênio são mais fortes que as ligações covalentes.", correct: false },
-            { value: 8, text: "Na molécula de NH₃, a geometria molecular é piramidal trigonal.", correct: true },
-            { value: 16, text: "Os metais formam ligações iônicas entre si, o que explica sua alta condutividade elétrica.", correct: false }
-        ],
-        answer: 11
+            { value: 1, text: "Na molécula de CO₂, as ligações entre carbono e oxigênio são covalentes polares, mas a molécula é apolar devido à sua geometria linear." },
+            { value: 2, text: "O cloreto de sódio (NaCl) é um composto iônico que apresenta alto ponto de fusão." },
+            { value: 4, text: "As ligações de hidrogênio são mais fortes que as ligações covalentes." },
+            { value: 8, text: "Na molécula de NH₃, a geometria molecular é piramidal trigonal." },
+            { value: 16, text: "Os metais formam ligações iônicas entre si, o que explica sua alta condutividade elétrica." }
+        ]
     },
     {
-        id: 43,
-        type: "multiple",
+        id: 43, type: "multiple",
         text: "CH₄ + 2O₂ → CO₂ + 2H₂O<br><br>O volume de CO₂ produzido (nas CNTP) a partir da combustão de 2 mols de CH₄ é:",
-        options: ["11,2 L", "22,4 L", "33,6 L", "44,8 L", "67,2 L"],
-        answer: 3
+        options: ["11,2 L", "22,4 L", "33,6 L", "44,8 L", "67,2 L"]
     },
     {
-        id: 44,
-        type: "multiple",
+        id: 44, type: "multiple",
         text: "Uma solução aquosa de HCl tem concentração de 0,01 mol/L. O pH dessa solução é:",
-        options: ["1", "2", "7", "12", "14"],
-        answer: 1
+        options: ["1", "2", "7", "12", "14"]
     },
     {
-        id: 45,
-        type: "multiple",
+        id: 45, type: "multiple",
         text: "O composto orgânico de fórmula CH₃CH₂COOH pertence à função:",
-        options: ["Álcool.", "Aldeído.", "Cetona.", "Ácido carboxílico.", "Éster."],
-        answer: 3
+        options: ["Álcool.", "Aldeído.", "Cetona.", "Ácido carboxílico.", "Éster."]
     },
     {
-        id: 46,
-        type: "multiple",
+        id: 46, type: "multiple",
         text: "Na eletrólise ígnea do NaCl, os produtos formados no cátodo e no ânodo são, respectivamente:",
-        options: [
-            "Cl₂ e Na",
-            "Na e Cl₂",
-            "H₂ e O₂",
-            "NaOH e Cl₂",
-            "Na e O₂"
-        ],
-        answer: 1
+        options: ["Cl₂ e Na", "Na e Cl₂", "H₂ e O₂", "NaOH e Cl₂", "Na e O₂"]
     },
     {
-        id: 47,
-        type: "soma",
+        id: 47, type: "soma",
         text: "Sobre cinética química e equilíbrio, some os números das afirmativas corretas.",
         items: [
-            { value: 1, text: "O aumento da temperatura geralmente aumenta a velocidade de uma reação química.", correct: true },
-            { value: 2, text: "Um catalisador altera o valor da constante de equilíbrio de uma reação.", correct: false },
-            { value: 4, text: "No equilíbrio químico, as velocidades das reações direta e inversa são iguais.", correct: true },
-            { value: 8, text: "O aumento da pressão desloca o equilíbrio para o lado com maior número de mols gasosos.", correct: false },
-            { value: 16, text: "A Lei de Le Chatelier prevê que um sistema em equilíbrio reage a perturbações externas de modo a minimizá-las.", correct: true }
-        ],
-        answer: 21
+            { value: 1, text: "O aumento da temperatura geralmente aumenta a velocidade de uma reação química." },
+            { value: 2, text: "Um catalisador altera o valor da constante de equilíbrio de uma reação." },
+            { value: 4, text: "No equilíbrio químico, as velocidades das reações direta e inversa são iguais." },
+            { value: 8, text: "O aumento da pressão desloca o equilíbrio para o lado com maior número de mols gasosos." },
+            { value: 16, text: "A Lei de Le Chatelier prevê que um sistema em equilíbrio reage a perturbações externas de modo a minimizá-las." }
+        ]
     },
     {
-        id: 48,
-        type: "multiple",
+        id: 48, type: "multiple",
         text: "A isomeria existente entre o etanol (CH₃CH₂OH) e o dimetiléter (CH₃OCH₃) é do tipo:",
-        options: [
-            "Isomeria geométrica (cis-trans).",
-            "Isomeria óptica.",
-            "Isomeria de cadeia.",
-            "Isomeria de função.",
-            "Isomeria de posição."
-        ],
-        answer: 3
+        options: ["Isomeria geométrica (cis-trans).", "Isomeria óptica.", "Isomeria de cadeia.", "Isomeria de função.", "Isomeria de posição."]
     },
     // ===== BIOLOGIA (49-56) =====
+    { section: "BIOLOGIA", sectionSub: "Questões 49 a 56" },
     {
-        section: "BIOLOGIA",
-        sectionSub: "Questões 49 a 56"
-    },
-    {
-        id: 49,
-        type: "soma",
+        id: 49, type: "soma",
         text: "Sobre a estrutura e a função das organelas celulares, some os números das afirmativas corretas.",
         items: [
-            { value: 1, text: "As mitocôndrias são responsáveis pela respiração celular aeróbica e possuem DNA próprio.", correct: true },
-            { value: 2, text: "Os ribossomos são organelas membranosas responsáveis pela digestão intracelular.", correct: false },
-            { value: 4, text: "O retículo endoplasmático liso participa da síntese de lipídios e da desintoxicação celular.", correct: true },
-            { value: 8, text: "O complexo de Golgi é responsável pela modificação, empacotamento e secreção de proteínas.", correct: true },
-            { value: 16, text: "Os cloroplastos estão presentes tanto em células vegetais quanto em células animais.", correct: false }
-        ],
-        answer: 13
+            { value: 1, text: "As mitocôndrias são responsáveis pela respiração celular aeróbica e possuem DNA próprio." },
+            { value: 2, text: "Os ribossomos são organelas membranosas responsáveis pela digestão intracelular." },
+            { value: 4, text: "O retículo endoplasmático liso participa da síntese de lipídios e da desintoxicação celular." },
+            { value: 8, text: "O complexo de Golgi é responsável pela modificação, empacotamento e secreção de proteínas." },
+            { value: 16, text: "Os cloroplastos estão presentes tanto em células vegetais quanto em células animais." }
+        ]
     },
     {
-        id: 50,
-        type: "multiple",
+        id: 50, type: "multiple",
         text: "Um casal em que o homem é daltônico (X<sup>d</sup>Y) e a mulher é homozigota normal (X<sup>D</sup>X<sup>D</sup>) terá filhas com o seguinte genótipo e fenótipo:",
         options: [
             "X<sup>D</sup>X<sup>d</sup>, todas portadoras do gene, mas com visão normal.",
@@ -1165,19 +1278,15 @@ const questionsData = [
             "X<sup>D</sup>X<sup>D</sup>, todas normais e não portadoras.",
             "X<sup>D</sup>Y, todas daltônicas.",
             "Metade X<sup>D</sup>X<sup>d</sup> (portadoras) e metade X<sup>d</sup>X<sup>d</sup> (daltônicas)."
-        ],
-        answer: 0
+        ]
     },
     {
-        id: 51,
-        type: "multiple",
+        id: 51, type: "multiple",
         text: "O processo pelo qual organismos autótrofos convertem energia luminosa em energia química, produzindo glicose e oxigênio, é denominado:",
-        options: ["Quimiossíntese.", "Fermentação.", "Respiração celular.", "Fotossíntese.", "Glicólise."],
-        answer: 3
+        options: ["Quimiossíntese.", "Fermentação.", "Respiração celular.", "Fotossíntese.", "Glicólise."]
     },
     {
-        id: 52,
-        type: "multiple",
+        id: 52, type: "multiple",
         text: "Sobre os biomas brasileiros, assinale a alternativa correta.",
         options: [
             "O Cerrado é caracterizado por vegetação densa e perene, com alta pluviosidade durante todo o ano.",
@@ -1185,64 +1294,49 @@ const questionsData = [
             "A Caatinga é um bioma exclusivamente brasileiro, adaptado a condições de semiárido, com plantas xerófitas.",
             "O Pampa gaúcho é dominado por florestas tropicais de grande porte.",
             "A Amazônia apresenta solos naturalmente férteis e ricos em nutrientes."
-        ],
-        answer: 2
+        ]
     },
     {
-        id: 53,
-        type: "multiple",
+        id: 53, type: "multiple",
         text: "Na cadeia alimentar: <strong>capim → gafanhoto → sapo → cobra → gavião</strong>, o sapo ocupa o nível trófico de:",
-        options: ["Produtor.", "Consumidor primário.", "Consumidor secundário.", "Consumidor terciário.", "Decompositor."],
-        answer: 2
+        options: ["Produtor.", "Consumidor primário.", "Consumidor secundário.", "Consumidor terciário.", "Decompositor."]
     },
     {
-        id: 54,
-        type: "soma",
+        id: 54, type: "soma",
         text: "Sobre a evolução biológica, some os números das afirmativas corretas.",
         items: [
-            { value: 1, text: "A seleção natural, proposta por Charles Darwin, favorece indivíduos com características que aumentam sua aptidão reprodutiva.", correct: true },
-            { value: 2, text: "Segundo Lamarck, as girafas desenvolveram pescoços longos porque esticavam o pescoço e essa característica adquirida foi herdada.", correct: true },
-            { value: 4, text: "A deriva genética é um mecanismo evolutivo que atua com mais intensidade em populações grandes.", correct: false },
-            { value: 8, text: "A especiação alopátrica ocorre quando uma barreira geográfica separa populações de uma mesma espécie.", correct: true },
-            { value: 16, text: "As evidências da evolução incluem fósseis, homologias anatômicas e similaridades no DNA entre espécies.", correct: true }
-        ],
-        answer: 27
+            { value: 1, text: "A seleção natural, proposta por Charles Darwin, favorece indivíduos com características que aumentam sua aptidão reprodutiva." },
+            { value: 2, text: "Segundo Lamarck, as girafas desenvolveram pescoços longos porque esticavam o pescoço e essa característica adquirida foi herdada." },
+            { value: 4, text: "A deriva genética é um mecanismo evolutivo que atua com mais intensidade em populações grandes." },
+            { value: 8, text: "A especiação alopátrica ocorre quando uma barreira geográfica separa populações de uma mesma espécie." },
+            { value: 16, text: "As evidências da evolução incluem fósseis, homologias anatômicas e similaridades no DNA entre espécies." }
+        ]
     },
     {
-        id: 55,
-        type: "multiple",
+        id: 55, type: "multiple",
         text: "O hormônio produzido pelo pâncreas e responsável pela redução da glicose no sangue é:",
-        options: ["Glucagon.", "Adrenalina.", "Insulina.", "Cortisol.", "Tiroxina."],
-        answer: 2
+        options: ["Glucagon.", "Adrenalina.", "Insulina.", "Cortisol.", "Tiroxina."]
     },
     {
-        id: 56,
-        type: "multiple",
+        id: 56, type: "multiple",
         text: "Durante a meiose, o crossing-over (permuta gênica) ocorre na:",
-        options: ["Metáfase I.", "Prófase I.", "Anáfase II.", "Telófase I.", "Prófase II."],
-        answer: 1
+        options: ["Metáfase I.", "Prófase I.", "Anáfase II.", "Telófase I.", "Prófase II."]
     },
     // ===== HISTÓRIA (57-64) =====
+    { section: "HISTÓRIA", sectionSub: "Questões 57 a 64" },
     {
-        section: "HISTÓRIA",
-        sectionSub: "Questões 57 a 64"
-    },
-    {
-        id: 57,
-        type: "soma",
+        id: 57, type: "soma",
         text: "Sobre o período colonial brasileiro, some os números das afirmativas corretas.",
         items: [
-            { value: 1, text: "O sistema de capitanias hereditárias foi um sucesso absoluto, com todas as 15 capitanias prosperando.", correct: false },
-            { value: 2, text: "A economia açucareira no Nordeste colonial baseava-se no latifúndio, na monocultura e na mão de obra escravizada africana.", correct: true },
-            { value: 4, text: "As bandeiras paulistas tiveram como objetivos a captura de indígenas e a prospecção de metais preciosos.", correct: true },
-            { value: 8, text: "A Inconfidência Mineira (1789) foi um movimento popular com participação massiva de escravizados.", correct: false },
-            { value: 16, text: "O Tratado de Tordesilhas (1494) dividiu as terras do Novo Mundo entre Portugal e Espanha.", correct: true }
-        ],
-        answer: 22
+            { value: 1, text: "O sistema de capitanias hereditárias foi um sucesso absoluto, com todas as 15 capitanias prosperando." },
+            { value: 2, text: "A economia açucareira no Nordeste colonial baseava-se no latifúndio, na monocultura e na mão de obra escravizada africana." },
+            { value: 4, text: "As bandeiras paulistas tiveram como objetivos a captura de indígenas e a prospecção de metais preciosos." },
+            { value: 8, text: "A Inconfidência Mineira (1789) foi um movimento popular com participação massiva de escravizados." },
+            { value: 16, text: "O Tratado de Tordesilhas (1494) dividiu as terras do Novo Mundo entre Portugal e Espanha." }
+        ]
     },
     {
-        id: 58,
-        type: "multiple",
+        id: 58, type: "multiple",
         text: "Sobre a Revolução Francesa (1789), assinale a alternativa correta.",
         options: [
             "A Revolução teve como principal consequência a restauração imediata do absolutismo monárquico.",
@@ -1250,12 +1344,10 @@ const questionsData = [
             "A Queda da Bastilha foi um evento simbólico sem qualquer impacto político real.",
             "A Revolução foi conduzida exclusivamente pela nobreza francesa.",
             "O período do Terror foi marcado pela tolerância religiosa e pela pacificação social."
-        ],
-        answer: 1
+        ]
     },
     {
-        id: 59,
-        type: "multiple",
+        id: 59, type: "multiple",
         text: "A Guerra do Paraguai (1864–1870). Uma das consequências desse conflito para o Brasil foi:",
         options: [
             "A anexação de todo o território paraguaio ao Império brasileiro.",
@@ -1263,25 +1355,21 @@ const questionsData = [
             "A abolição imediata da escravidão.",
             "O isolamento diplomático do Brasil na América do Sul durante todo o século XX.",
             "A transferência da capital do Império para Porto Alegre."
-        ],
-        answer: 1
+        ]
     },
     {
-        id: 60,
-        type: "soma",
+        id: 60, type: "soma",
         text: "Sobre a Era Vargas (1930–1945), some os números das afirmativas corretas.",
         items: [
-            { value: 1, text: "A Revolução de 1930 levou Getúlio Vargas ao poder, encerrando a política do café com leite.", correct: true },
-            { value: 2, text: "O Estado Novo (1937–1945) foi um regime democrático que ampliou as liberdades individuais.", correct: false },
-            { value: 4, text: "A CLT, de 1943, reuniu e sistematizou a legislação trabalhista brasileira.", correct: true },
-            { value: 8, text: "Vargas criou a CSN e a Petrobras durante o Estado Novo.", correct: false },
-            { value: 16, text: "O DIP foi utilizado para controlar a mídia e promover a imagem de Vargas.", correct: true }
-        ],
-        answer: 21
+            { value: 1, text: "A Revolução de 1930 levou Getúlio Vargas ao poder, encerrando a política do café com leite." },
+            { value: 2, text: "O Estado Novo (1937–1945) foi um regime democrático que ampliou as liberdades individuais." },
+            { value: 4, text: "A CLT, de 1943, reuniu e sistematizou a legislação trabalhista brasileira." },
+            { value: 8, text: "Vargas criou a CSN e a Petrobras durante o Estado Novo." },
+            { value: 16, text: "O DIP foi utilizado para controlar a mídia e promover a imagem de Vargas." }
+        ]
     },
     {
-        id: 61,
-        type: "multiple",
+        id: 61, type: "multiple",
         text: "A Guerra Fria (1947–1991). Assinale a alternativa que apresenta um evento ocorrido durante esse período.",
         options: [
             "A Primeira Guerra Mundial.",
@@ -1289,12 +1377,10 @@ const questionsData = [
             "A Revolução Francesa.",
             "A unificação da Alemanha por Bismarck.",
             "A assinatura do Tratado de Versalhes."
-        ],
-        answer: 1
+        ]
     },
     {
-        id: 62,
-        type: "multiple",
+        id: 62, type: "multiple",
         text: "Sobre o processo de redemocratização do Brasil na década de 1980, assinale a alternativa correta.",
         options: [
             "A Emenda Dante de Oliveira foi aprovada pelo Congresso, garantindo eleições diretas em 1984.",
@@ -1302,25 +1388,21 @@ const questionsData = [
             "A Constituição de 1988 manteve a censura prévia à imprensa.",
             "O movimento \"Diretas Já\" foi uma manifestação exclusivamente militar.",
             "O regime militar terminou com um golpe de Estado da esquerda armada."
-        ],
-        answer: 1
+        ]
     },
     {
-        id: 63,
-        type: "soma",
+        id: 63, type: "soma",
         text: "Sobre a história da África e a diáspora africana, some os números das afirmativas corretas.",
         items: [
-            { value: 1, text: "O tráfico transatlântico foi uma das maiores migrações forçadas da história.", correct: true },
-            { value: 2, text: "A Conferência de Berlim (1884–1885) regulamentou a partilha da África entre potências europeias.", correct: true },
-            { value: 4, text: "O apartheid na África do Sul foi um regime de segregação racial que vigorou até a década de 1990.", correct: true },
-            { value: 8, text: "A cultura afro-brasileira é resultado direto da presença e da resistência dos povos africanos no Brasil.", correct: true },
-            { value: 16, text: "A independência das colônias africanas ocorreu majoritariamente no século XVIII.", correct: false }
-        ],
-        answer: 15
+            { value: 1, text: "O tráfico transatlântico foi uma das maiores migrações forçadas da história." },
+            { value: 2, text: "A Conferência de Berlim (1884–1885) regulamentou a partilha da África entre potências europeias." },
+            { value: 4, text: "O apartheid na África do Sul foi um regime de segregação racial que vigorou até a década de 1990." },
+            { value: 8, text: "A cultura afro-brasileira é resultado direto da presença e da resistência dos povos africanos no Brasil." },
+            { value: 16, text: "A independência das colônias africanas ocorreu majoritariamente no século XVIII." }
+        ]
     },
     {
-        id: 64,
-        type: "multiple",
+        id: 64, type: "multiple",
         text: "A Reforma Protestante, iniciada por Martinho Lutero em 1517, teve como uma de suas causas centrais:",
         options: [
             "A defesa da infalibilidade papal e da venda de indulgências.",
@@ -1328,30 +1410,23 @@ const questionsData = [
             "A promoção do politeísmo como alternativa ao cristianismo.",
             "A aliança entre Lutero e o Império Otomano contra a Espanha.",
             "A exigência de que a Bíblia fosse lida exclusivamente em latim."
-        ],
-        answer: 1
+        ]
     },
     // ===== GEOGRAFIA (65-72) =====
+    { section: "GEOGRAFIA", sectionSub: "Questões 65 a 72" },
     {
-        section: "GEOGRAFIA",
-        sectionSub: "Questões 65 a 72"
-    },
-    {
-        id: 65,
-        type: "soma",
+        id: 65, type: "soma",
         text: "Sobre a dinâmica climática e os fenômenos atmosféricos, some os números das afirmativas corretas.",
         items: [
-            { value: 1, text: "O fenômeno El Niño é caracterizado pelo aquecimento anormal das águas do Oceano Pacífico equatorial.", correct: true },
-            { value: 2, text: "As ilhas de calor urbanas resultam da substituição da vegetação por superfícies impermeáveis.", correct: true },
-            { value: 4, text: "A inversão térmica ocorre principalmente no verão, favorecendo a dispersão de poluentes.", correct: false },
-            { value: 8, text: "O efeito estufa é um processo natural essencial, mas sua intensificação causa o aquecimento global.", correct: true },
-            { value: 16, text: "As monções são ventos sazonais que influenciam o clima do sul e sudeste da Ásia.", correct: true }
-        ],
-        answer: 27
+            { value: 1, text: "O fenômeno El Niño é caracterizado pelo aquecimento anormal das águas do Oceano Pacífico equatorial." },
+            { value: 2, text: "As ilhas de calor urbanas resultam da substituição da vegetação por superfícies impermeáveis." },
+            { value: 4, text: "A inversão térmica ocorre principalmente no verão, favorecendo a dispersão de poluentes." },
+            { value: 8, text: "O efeito estufa é um processo natural essencial, mas sua intensificação causa o aquecimento global." },
+            { value: 16, text: "As monções são ventos sazonais que influenciam o clima do sul e sudeste da Ásia." }
+        ]
     },
     {
-        id: 66,
-        type: "multiple",
+        id: 66, type: "multiple",
         text: "Sobre a urbanização brasileira, assinale a alternativa correta.",
         options: [
             "O Brasil é um país majoritariamente rural.",
@@ -1359,12 +1434,10 @@ const questionsData = [
             "O processo de urbanização foi acelerado a partir da década de 1950, associado à industrialização e ao êxodo rural.",
             "As metrópoles brasileiras não apresentam problemas de infraestrutura.",
             "São Paulo é a única metrópole do Brasil."
-        ],
-        answer: 2
+        ]
     },
     {
-        id: 67,
-        type: "multiple",
+        id: 67, type: "multiple",
         text: "O Aquífero Guarani está localizado sob territórios de:",
         options: [
             "Brasil, Argentina, Paraguai e Uruguai.",
@@ -1372,38 +1445,26 @@ const questionsData = [
             "Brasil, Bolívia, Chile e Equador.",
             "Apenas Brasil e Argentina.",
             "Brasil, Paraguai e México."
-        ],
-        answer: 0
+        ]
     },
     {
-        id: 68,
-        type: "soma",
+        id: 68, type: "soma",
         text: "Sobre a geopolítica mundial contemporânea, some os números das afirmativas corretas.",
         items: [
-            { value: 1, text: "A globalização intensificou os fluxos de capitais, mas também aprofundou desigualdades regionais.", correct: true },
-            { value: 2, text: "O BRICS é um bloco econômico formal com moeda única, semelhante à União Europeia.", correct: false },
-            { value: 4, text: "A Guerra da Ucrânia (2022) teve impactos significativos nos mercados globais de energia e alimentos.", correct: true },
-            { value: 8, text: "A China é a segunda maior economia do mundo e tem ampliado sua influência geopolítica.", correct: true },
-            { value: 16, text: "A ONU tem como objetivo a manutenção da paz e da segurança internacionais.", correct: true }
-        ],
-        answer: 29
+            { value: 1, text: "A globalização intensificou os fluxos de capitais, mas também aprofundou desigualdades regionais." },
+            { value: 2, text: "O BRICS é um bloco econômico formal com moeda única, semelhante à União Europeia." },
+            { value: 4, text: "A Guerra da Ucrânia (2022) teve impactos significativos nos mercados globais de energia e alimentos." },
+            { value: 8, text: "A China é a segunda maior economia do mundo e tem ampliado sua influência geopolítica." },
+            { value: 16, text: "A ONU tem como objetivo a manutenção da paz e da segurança internacionais." }
+        ]
     },
     {
-        id: 69,
-        type: "multiple",
+        id: 69, type: "multiple",
         text: "O tipo de relevo predominante no estado do Paraná é:",
-        options: [
-            "Planície costeira.",
-            "Depressão absoluta.",
-            "Planalto.",
-            "Cordilheira vulcânica.",
-            "Duna litorânea."
-        ],
-        answer: 2
+        options: ["Planície costeira.", "Depressão absoluta.", "Planalto.", "Cordilheira vulcânica.", "Duna litorânea."]
     },
     {
-        id: 70,
-        type: "multiple",
+        id: 70, type: "multiple",
         text: "Sobre os movimentos da Terra, assinale a alternativa correta.",
         options: [
             "O movimento de rotação da Terra dura aproximadamente 365 dias e é responsável pelas estações do ano.",
@@ -1411,12 +1472,10 @@ const questionsData = [
             "As marés são causadas exclusivamente pela atração gravitacional do Sol.",
             "O equinócio ocorre quando um hemisfério está maximamente inclinado em direção ao Sol.",
             "A duração do dia e da noite é igual em todas as latitudes durante o solstício de verão."
-        ],
-        answer: 1
+        ]
     },
     {
-        id: 71,
-        type: "multiple",
+        id: 71, type: "multiple",
         text: "A matriz energética brasileira se diferencia da média mundial principalmente por:",
         options: [
             "Depender quase exclusivamente de combustíveis fósseis.",
@@ -1424,12 +1483,10 @@ const questionsData = [
             "Ser a maior produtora mundial de energia nuclear.",
             "Não utilizar petróleo em nenhum setor da economia.",
             "Basear-se exclusivamente na energia solar."
-        ],
-        answer: 1
+        ]
     },
     {
-        id: 72,
-        type: "multiple",
+        id: 72, type: "multiple",
         text: "Sobre a questão agrária no Brasil, assinale a alternativa correta.",
         options: [
             "A concentração fundiária no Brasil é baixa.",
@@ -1437,30 +1494,23 @@ const questionsData = [
             "Os conflitos no campo estão relacionados à disputa por terras entre grandes proprietários, posseiros, indígenas e quilombolas.",
             "A reforma agrária foi completamente concluída na década de 1960.",
             "A agricultura familiar é responsável por menos de 5% da produção de alimentos."
-        ],
-        answer: 2
+        ]
     },
     // ===== FILOSOFIA (73-76) =====
+    { section: "FILOSOFIA", sectionSub: "Questões 73 a 76" },
     {
-        section: "FILOSOFIA",
-        sectionSub: "Questões 73 a 76"
-    },
-    {
-        id: 73,
-        type: "soma",
+        id: 73, type: "soma",
         text: "Sobre a filosofia antiga, some os números das afirmativas corretas.",
         items: [
-            { value: 1, text: "Sócrates utilizava o método da maiêutica para levar o interlocutor a descobrir a verdade por si mesmo.", correct: true },
-            { value: 2, text: "Platão, na <em>Alegoria da Caverna</em>, distingue o mundo sensível do mundo inteligível.", correct: true },
-            { value: 4, text: "Aristóteles defendia que o conhecimento se origina exclusivamente da razão pura, sem contribuição da experiência sensorial.", correct: false },
-            { value: 8, text: "Os pré-socráticos buscavam explicar a natureza por meio de princípios racionais, abandonando explicações mitológicas.", correct: true },
-            { value: 16, text: "Os estoicos pregavam que a felicidade depende do controle das paixões e da aceitação racional do destino.", correct: true }
-        ],
-        answer: 27
+            { value: 1, text: "Sócrates utilizava o método da maiêutica para levar o interlocutor a descobrir a verdade por si mesmo." },
+            { value: 2, text: "Platão, na <em>Alegoria da Caverna</em>, distingue o mundo sensível do mundo inteligível." },
+            { value: 4, text: "Aristóteles defendia que o conhecimento se origina exclusivamente da razão pura, sem contribuição da experiência sensorial." },
+            { value: 8, text: "Os pré-socráticos buscavam explicar a natureza por meio de princípios racionais, abandonando explicações mitológicas." },
+            { value: 16, text: "Os estoicos pregavam que a felicidade depende do controle das paixões e da aceitação racional do destino." }
+        ]
     },
     {
-        id: 74,
-        type: "multiple",
+        id: 74, type: "multiple",
         text: "O imperativo categórico, formulado por Immanuel Kant, pode ser expresso como:",
         options: [
             "\"Age de modo a maximizar a felicidade do maior número de pessoas.\"",
@@ -1468,12 +1518,10 @@ const questionsData = [
             "\"Age sempre de acordo com os costumes e tradições de tua sociedade.\"",
             "\"Age de modo a obter o maior prazer e a menor dor possíveis.\"",
             "\"Age conforme a vontade de Deus, revelada nas escrituras sagradas.\""
-        ],
-        answer: 1
+        ]
     },
     {
-        id: 75,
-        type: "multiple",
+        id: 75, type: "multiple",
         text: "Sobre o pensamento de Karl Marx, assinale a alternativa correta.",
         options: [
             "Marx defendia que a história humana é movida pela luta de classes entre opressores e oprimidos.",
@@ -1481,12 +1529,10 @@ const questionsData = [
             "Para Marx, a religião deve ser a base do Estado.",
             "Marx rejeitava qualquer forma de revolução.",
             "Marx acreditava que o proletariado já detinha o controle dos meios de produção no século XIX."
-        ],
-        answer: 0
+        ]
     },
     {
-        id: 76,
-        type: "multiple",
+        id: 76, type: "multiple",
         text: `A noção de "banalidade do mal", de Hannah Arendt, refere-se à ideia de que:`,
         options: [
             "O mal é uma força sobrenatural que possui os seres humanos.",
@@ -1494,30 +1540,23 @@ const questionsData = [
             "O mal é sempre praticado por indivíduos psicopatas.",
             "A banalidade do mal justifica moralmente as ações dos criminosos de guerra.",
             "O mal só existe em regimes totalitários e não pode ocorrer em democracias."
-        ],
-        answer: 1
+        ]
     },
     // ===== SOCIOLOGIA (77-80) =====
+    { section: "SOCIOLOGIA", sectionSub: "Questões 77 a 80" },
     {
-        section: "SOCIOLOGIA",
-        sectionSub: "Questões 77 a 80"
-    },
-    {
-        id: 77,
-        type: "soma",
+        id: 77, type: "soma",
         text: "Sobre os clássicos da Sociologia, some os números das afirmativas corretas.",
         items: [
-            { value: 1, text: "Émile Durkheim definiu o fato social como maneiras de agir, pensar e sentir exteriores ao indivíduo e dotadas de poder de coerção.", correct: true },
-            { value: 2, text: "Max Weber classificou a ação social em quatro tipos: racional com relação a fins, racional com relação a valores, afetiva e tradicional.", correct: true },
-            { value: 4, text: "Karl Marx considerava a infraestrutura econômica como determinante da superestrutura.", correct: true },
-            { value: 8, text: "Auguste Comte, fundador do positivismo, propôs a Lei dos Três Estados: teológico, metafísico e positivo.", correct: true },
-            { value: 16, text: "Durkheim defendia que o suicídio é um fenômeno puramente individual, sem relação com fatores sociais.", correct: false }
-        ],
-        answer: 15
+            { value: 1, text: "Émile Durkheim definiu o fato social como maneiras de agir, pensar e sentir exteriores ao indivíduo e dotadas de poder de coerção." },
+            { value: 2, text: "Max Weber classificou a ação social em quatro tipos: racional com relação a fins, racional com relação a valores, afetiva e tradicional." },
+            { value: 4, text: "Karl Marx considerava a infraestrutura econômica como determinante da superestrutura." },
+            { value: 8, text: "Auguste Comte, fundador do positivismo, propôs a Lei dos Três Estados: teológico, metafísico e positivo." },
+            { value: 16, text: "Durkheim defendia que o suicídio é um fenômeno puramente individual, sem relação com fatores sociais." }
+        ]
     },
     {
-        id: 78,
-        type: "multiple",
+        id: 78, type: "multiple",
         text: `O conceito de "desigualdade social" no Brasil está intrinsecamente ligado a fatores históricos, como:`,
         options: [
             "A igualdade de condições entre todos os grupos étnicos desde o período colonial.",
@@ -1525,12 +1564,10 @@ const questionsData = [
             "A inexistência de políticas públicas em qualquer período da história brasileira.",
             "A imigração europeia, que eliminou completamente as desigualdades raciais.",
             "A distribuição igualitária de renda promovida durante o Império."
-        ],
-        answer: 1
+        ]
     },
     {
-        id: 79,
-        type: "multiple",
+        id: 79, type: "multiple",
         text: `Sobre o conceito de "cultura" na perspectiva sociológica, assinale a alternativa correta.`,
         options: [
             "Cultura refere-se exclusivamente às manifestações artísticas eruditas.",
@@ -1538,46 +1575,219 @@ const questionsData = [
             "Cultura é um fenômeno biológico, determinado geneticamente e imutável.",
             "Apenas as sociedades industrializadas possuem cultura.",
             "A cultura de massa elimina completamente as culturas locais."
-        ],
-        answer: 1
+        ]
     },
     {
-        id: 80,
-        type: "soma",
+        id: 80, type: "soma",
         text: "Sobre os movimentos sociais contemporâneos, some os números das afirmativas corretas.",
         items: [
-            { value: 1, text: "Os movimentos sociais são formas de ação coletiva que buscam transformar ou preservar aspectos da estrutura social.", correct: true },
-            { value: 2, text: "O movimento feminista luta pela igualdade de gênero e pelo fim da violência contra as mulheres.", correct: true },
-            { value: 4, text: "Os movimentos ambientalistas questionam o modelo de desenvolvimento baseado na exploração ilimitada dos recursos naturais.", correct: true },
-            { value: 8, text: "Os movimentos sociais não utilizam redes sociais digitais como instrumento de mobilização.", correct: false },
-            { value: 16, text: "O movimento negro no Brasil combate o racismo estrutural e valoriza a cultura afro-brasileira.", correct: true }
-        ],
-        answer: 23
+            { value: 1, text: "Os movimentos sociais são formas de ação coletiva que buscam transformar ou preservar aspectos da estrutura social." },
+            { value: 2, text: "O movimento feminista luta pela igualdade de gênero e pelo fim da violência contra as mulheres." },
+            { value: 4, text: "Os movimentos ambientalistas questionam o modelo de desenvolvimento baseado na exploração ilimitada dos recursos naturais." },
+            { value: 8, text: "Os movimentos sociais não utilizam redes sociais digitais como instrumento de mobilização." },
+            { value: 16, text: "O movimento negro no Brasil combate o racismo estrutural e valoriza a cultura afro-brasileira." }
+        ]
     }
 ];
 
+// ============================
+// VARIÁVEIS GLOBAIS
+// ============================
 const letters = ['A', 'B', 'C', 'D', 'E'];
 let correctCount = 0;
 let wrongCount = 0;
 let answeredCount = 0;
 const totalQuestions = 80;
+const somaSelections = {};
+let revealEnabled = true;
 
+// Chave do cache
+const CACHE_KEY = 'simulado_ufpr_2027_v2';
+
+// ============================
+// CACHE (localStorage)
+// ============================
+function saveToCache() {
+    const state = {
+        correctCount,
+        wrongCount,
+        answeredCount,
+        answeredQuestions: {},
+        somaSelections: {},
+        revealEnabled
+    };
+
+    // Salvar estado de cada questão respondida
+    questionsData.forEach(q => {
+        if (!q.id) return;
+        const card = document.getElementById(`qcard-${q.id}`);
+        if (!card) return;
+
+        if (card.classList.contains('answered-correct') || card.classList.contains('answered-wrong')) {
+            state.answeredQuestions[q.id] = {
+                correct: card.classList.contains('answered-correct'),
+                type: q.type
+            };
+
+            if (q.type === 'multiple') {
+                const buttons = document.querySelectorAll(`#options-${q.id} .option-btn`);
+                const selectedIdx = Array.from(buttons).findIndex(b => b.classList.contains('correct') || b.classList.contains('wrong'));
+                state.answeredQuestions[q.id].selected = selectedIdx;
+            } else if (q.type === 'soma') {
+                state.somaSelections[q.id] = Array.from(somaSelections[q.id] || []);
+            }
+        }
+    });
+
+    try {
+        localStorage.setItem(CACHE_KEY, JSON.stringify(state));
+    } catch(e) {}
+}
+
+function loadFromCache() {
+    try {
+        const data = localStorage.getItem(CACHE_KEY);
+        if (!data) return false;
+        const state = JSON.parse(data);
+        if (!state || !state.answeredQuestions) return false;
+
+        correctCount = state.correctCount || 0;
+        wrongCount = state.wrongCount || 0;
+        answeredCount = state.answeredCount || 0;
+        revealEnabled = state.revealEnabled !== undefined ? state.revealEnabled : true;
+
+        document.getElementById('toggleReveal').checked = revealEnabled;
+
+        // Restaurar cada questão
+        Object.keys(state.answeredQuestions).forEach(qIdStr => {
+            const qId = parseInt(qIdStr);
+            const qState = state.answeredQuestions[qIdStr];
+            const qData = questionsData.find(q => q.id === qId);
+            if (!qData) return;
+
+            const correctAnswer = _g(qId);
+
+            if (qData.type === 'multiple') {
+                const buttons = document.querySelectorAll(`#options-${qId} .option-btn`);
+                buttons.forEach((btn, i) => {
+                    btn.classList.add('disabled');
+                    if (i === correctAnswer) {
+                        btn.classList.add('show-correct');
+                        btn.classList.add('correct');
+                    }
+                });
+
+                if (!qState.correct && qState.selected !== undefined && qState.selected !== correctAnswer) {
+                    buttons[qState.selected].classList.add('wrong');
+                    buttons[qState.selected].classList.remove('correct');
+                }
+
+                const card = document.getElementById(`qcard-${qId}`);
+                const feedback = document.getElementById(`feedback-${qId}`);
+                if (qState.correct) {
+                    card.classList.add('answered-correct');
+                    feedback.className = 'feedback correct';
+                    feedback.textContent = '✅ Resposta correta!';
+                } else {
+                    card.classList.add('answered-wrong');
+                    feedback.className = 'feedback wrong';
+                    feedback.textContent = `❌ Resposta incorreta. A alternativa correta é: ${letters[correctAnswer]}.`;
+                }
+
+                const revBtn = document.getElementById(`reveal-${qId}`);
+                if (revBtn) revBtn.disabled = true;
+
+            } else if (qData.type === 'soma') {
+                const selectedItems = new Set(state.somaSelections[qId] || []);
+                somaSelections[qId] = selectedItems;
+                const correctValues = _gs(qId);
+
+                qData.items.forEach((si, sii) => {
+                    const el = document.getElementById(`soma-item-${qId}-${sii}`);
+                    el.classList.add('disabled');
+
+                    const wasSelected = selectedItems.has(sii);
+                    const isCorrect = correctValues.includes(si.value);
+
+                    if (isCorrect && wasSelected) {
+                        el.classList.add('item-correct');
+                    } else if (!isCorrect && wasSelected) {
+                        el.classList.add('item-wrong');
+                    } else if (isCorrect && !wasSelected) {
+                        el.classList.add('item-missed');
+                    }
+                });
+
+                const btn = document.getElementById(`soma-btn-${qId}`);
+                if (btn) btn.disabled = true;
+
+                const card = document.getElementById(`qcard-${qId}`);
+                const feedback = document.getElementById(`feedback-${qId}`);
+                const result = document.getElementById(`soma-result-${qId}`);
+
+                let userSum = 0;
+                qData.items.forEach((si, sii) => {
+                    if (selectedItems.has(sii)) userSum += si.value;
+                });
+
+                const correctSum = _g(qId);
+                result.innerHTML = `Sua soma: <strong>${userSum}</strong> | Soma correta: <strong>${correctSum}</strong>`;
+
+                if (qState.correct) {
+                    card.classList.add('answered-correct');
+                    feedback.className = 'feedback correct';
+                    feedback.textContent = `✅ Resposta correta! Soma = ${correctSum}`;
+                } else {
+                    card.classList.add('answered-wrong');
+                    feedback.className = 'feedback wrong';
+                    feedback.textContent = `❌ Resposta incorreta. Soma correta = ${correctSum}. Itens em amarelo são os que faltaram.`;
+                }
+
+                const revBtn = document.getElementById(`reveal-${qId}`);
+                if (revBtn) revBtn.disabled = true;
+            }
+        });
+
+        updateScore();
+        return true;
+    } catch(e) {
+        return false;
+    }
+}
+
+function clearCache() {
+    if (confirm('⚠️ Tem certeza que deseja limpar o cache?\n\nIsso vai apagar todo o seu progresso salvo.')) {
+        try {
+            localStorage.removeItem(CACHE_KEY);
+        } catch(e) {}
+        resetQuiz();
+        const notice = document.getElementById('cacheNotice');
+        notice.textContent = '🗑️ Cache limpo com sucesso!';
+        notice.style.borderColor = 'rgba(255, 152, 0, 0.3)';
+        notice.style.color = '#ff9800';
+        setTimeout(() => {
+            notice.textContent = '💾 Suas respostas são salvas automaticamente';
+            notice.style.borderColor = 'rgba(0, 230, 118, 0.1)';
+            notice.style.color = '#4a6a4a';
+        }, 3000);
+    }
+}
+
+// ============================
+// CONSTRUÇÃO DO QUIZ
+// ============================
 function buildQuiz() {
     const container = document.getElementById('questionsContainer');
     let html = '';
-    let currentSection = '';
 
-    questionsData.forEach((item, index) => {
-        // Section headers
+    questionsData.forEach((item) => {
         if (item.section) {
-            currentSection = item.section;
             html += `<div class="section-header">
                 <h3>📚 ${item.section}</h3>
                 <p>${item.sectionSub || ''}</p>
             </div>`;
         }
 
-        // Text boxes (standalone)
         if (item.textBefore && !item.id) {
             html += buildTextBox(item.textBefore);
             return;
@@ -1585,26 +1795,26 @@ function buildQuiz() {
 
         if (!item.id) return;
 
-        // Question card
         html += `<div class="question-card" id="qcard-${item.id}">`;
 
-        // Inline text box
         if (item.textBefore) {
             html += buildTextBox(item.textBefore);
         }
 
+        html += `<div class="question-header">`;
         html += `<div class="question-number">${item.id}</div>`;
-
         if (item.type === 'soma') {
             html += `<span class="question-type">Soma</span>`;
         }
+        html += `<button class="reveal-btn ${revealEnabled ? '' : 'hidden'}" id="reveal-${item.id}" onclick="revealAnswer(${item.id})">👁 Ver Resposta</button>`;
+        html += `</div>`;
 
         html += `<div class="question-text">${item.text}</div>`;
 
         if (item.type === 'multiple') {
             html += `<div class="options" id="options-${item.id}">`;
             item.options.forEach((opt, oi) => {
-                html += `<button class="option-btn" id="opt-${item.id}-${oi}" onclick="selectOption(${item.id}, ${oi}, ${item.answer})">
+                html += `<button class="option-btn" id="opt-${item.id}-${oi}" onclick="selectOption(${item.id}, ${oi})">
                     <span class="option-letter">${letters[oi]}</span>
                     <span>${opt}</span>
                 </button>`;
@@ -1638,22 +1848,28 @@ function buildTextBox(tb) {
     </div>`;
 }
 
-function selectOption(qId, selected, correct) {
+// ============================
+// INTERAÇÕES
+// ============================
+function selectOption(qId, selected) {
+    const correct = _g(qId);
     const optionsDiv = document.getElementById(`options-${qId}`);
     const buttons = optionsDiv.querySelectorAll('.option-btn');
 
-    // Prevent double answers
     if (buttons[0].classList.contains('disabled')) return;
 
     buttons.forEach((btn, i) => {
         btn.classList.add('disabled');
         if (i === correct) {
             btn.classList.add('show-correct');
+            btn.classList.add('correct');
         }
     });
 
     const card = document.getElementById(`qcard-${qId}`);
     const feedback = document.getElementById(`feedback-${qId}`);
+    const revBtn = document.getElementById(`reveal-${qId}`);
+    if (revBtn) revBtn.disabled = true;
 
     if (selected === correct) {
         buttons[selected].classList.add('correct');
@@ -1663,7 +1879,6 @@ function selectOption(qId, selected, correct) {
         correctCount++;
     } else {
         buttons[selected].classList.add('wrong');
-        buttons[correct].classList.add('correct');
         card.classList.add('answered-wrong');
         feedback.className = 'feedback wrong';
         feedback.textContent = `❌ Resposta incorreta. A alternativa correta é: ${letters[correct]}.`;
@@ -1672,10 +1887,8 @@ function selectOption(qId, selected, correct) {
 
     answeredCount++;
     updateScore();
+    saveToCache();
 }
-
-// Soma question state
-const somaSelections = {};
 
 function toggleSoma(qId, itemIndex) {
     const item = document.getElementById(`soma-item-${qId}-${itemIndex}`);
@@ -1701,6 +1914,7 @@ function confirmSoma(qId) {
     btn.disabled = true;
 
     const selected = somaSelections[qId] || new Set();
+    const correctValues = _gs(qId);
     let userSum = 0;
 
     qData.items.forEach((si, sii) => {
@@ -1708,40 +1922,99 @@ function confirmSoma(qId) {
         el.classList.add('disabled');
 
         const wasSelected = selected.has(sii);
+        const isCorrect = correctValues.includes(si.value);
 
-        if (si.correct && wasSelected) {
+        if (isCorrect && wasSelected) {
             el.classList.add('item-correct');
             userSum += si.value;
-        } else if (!si.correct && wasSelected) {
+        } else if (!isCorrect && wasSelected) {
             el.classList.add('item-wrong');
             userSum += si.value;
-        } else if (si.correct && !wasSelected) {
+        } else if (isCorrect && !wasSelected) {
             el.classList.add('item-missed');
         }
     });
 
+    const correctSum = _g(qId);
     const card = document.getElementById(`qcard-${qId}`);
     const feedback = document.getElementById(`feedback-${qId}`);
     const result = document.getElementById(`soma-result-${qId}`);
+    const revBtn = document.getElementById(`reveal-${qId}`);
+    if (revBtn) revBtn.disabled = true;
 
-    result.innerHTML = `Sua soma: <strong>${userSum}</strong> | Soma correta: <strong>${qData.answer}</strong>`;
+    result.innerHTML = `Sua soma: <strong>${userSum}</strong> | Soma correta: <strong>${correctSum}</strong>`;
 
-    if (userSum === qData.answer) {
+    if (userSum === correctSum) {
         card.classList.add('answered-correct');
         feedback.className = 'feedback correct';
-        feedback.textContent = `✅ Resposta correta! Soma = ${qData.answer}`;
+        feedback.textContent = `✅ Resposta correta! Soma = ${correctSum}`;
         correctCount++;
     } else {
         card.classList.add('answered-wrong');
         feedback.className = 'feedback wrong';
-        feedback.textContent = `❌ Resposta incorreta. Soma correta = ${qData.answer}. Itens em amarelo são os que faltaram.`;
+        feedback.textContent = `❌ Resposta incorreta. Soma correta = ${correctSum}. Itens em amarelo são os que faltaram.`;
         wrongCount++;
     }
 
     answeredCount++;
     updateScore();
+    saveToCache();
 }
 
+// ============================
+// VER RESPOSTA
+// ============================
+function revealAnswer(qId) {
+    const qData = questionsData.find(q => q.id === qId);
+    if (!qData) return;
+
+    const card = document.getElementById(`qcard-${qId}`);
+    if (card.classList.contains('answered-correct') || card.classList.contains('answered-wrong')) return;
+
+    const revBtn = document.getElementById(`reveal-${qId}`);
+    if (revBtn) revBtn.disabled = true;
+
+    const correct = _g(qId);
+
+    if (qData.type === 'multiple') {
+        const buttons = document.querySelectorAll(`#options-${qId} .option-btn`);
+        buttons[correct].classList.add('revealed');
+
+        const feedback = document.getElementById(`feedback-${qId}`);
+        feedback.className = 'feedback revealed';
+        feedback.textContent = `👁 Resposta: ${letters[correct]}. Selecione uma alternativa para registrar sua resposta.`;
+
+    } else if (qData.type === 'soma') {
+        const correctValues = _gs(qId);
+        qData.items.forEach((si, sii) => {
+            if (correctValues.includes(si.value)) {
+                const el = document.getElementById(`soma-item-${qId}-${sii}`);
+                el.classList.add('item-revealed');
+            }
+        });
+
+        const feedback = document.getElementById(`feedback-${qId}`);
+        feedback.className = 'feedback revealed';
+        feedback.textContent = `👁 Soma correta: ${correct}. Itens corretos destacados em amarelo. Confirme para registrar.`;
+    }
+}
+
+function toggleRevealButtons() {
+    revealEnabled = document.getElementById('toggleReveal').checked;
+    const allRevealBtns = document.querySelectorAll('.reveal-btn');
+    allRevealBtns.forEach(btn => {
+        if (revealEnabled) {
+            btn.classList.remove('hidden');
+        } else {
+            btn.classList.add('hidden');
+        }
+    });
+    saveToCache();
+}
+
+// ============================
+// PONTUAÇÃO
+// ============================
 function updateScore() {
     document.getElementById('correctCount').textContent = correctCount;
     document.getElementById('wrongCount').textContent = wrongCount;
@@ -1755,17 +2028,29 @@ function updateScore() {
 }
 
 function resetQuiz() {
+    if (answeredCount > 0 && !confirm('⚠️ Tem certeza que deseja reiniciar?\n\nTodo o progresso atual será perdido.')) return;
+
     correctCount = 0;
     wrongCount = 0;
     answeredCount = 0;
     Object.keys(somaSelections).forEach(k => delete somaSelections[k]);
+    revealEnabled = document.getElementById('toggleReveal').checked;
     updateScore();
     buildQuiz();
+    toggleRevealButtons();
+    saveToCache();
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// Initialize
+// ============================
+// INICIALIZAÇÃO
+// ============================
 buildQuiz();
+toggleRevealButtons();
+const cacheLoaded = loadFromCache();
+if (!cacheLoaded) {
+    updateScore();
+}
 </script>
 
 </body>
